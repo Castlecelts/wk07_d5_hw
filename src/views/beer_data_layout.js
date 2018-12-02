@@ -11,8 +11,18 @@ BeerDataLayout.prototype.displayData = function (div, beer) {
   list.appendChild(this.createCustomElement("p", "textContent", `${beer.description}`));
   div.appendChild(list);
 
+  // const imageDiv =  this.createCustomElement("div", "innerHTML", " ")
+  // const image = this.createCustomElement("img", "src", `${beer.image_url}`)
+  // image.style.height = `20vw`;
+  // imageDiv.appendChild(image);
+  // div.appendChild(imageDiv);
+};
+
+BeerDataLayout.prototype.displayImage = function (div, beer) {
+  // const imageDiv =  this.createCustomElement("div", "innerHTML", " ")
   const image = this.createCustomElement("img", "src", `${beer.image_url}`)
-  // image.style.height = `${beer.height/5}px`;
+  image.style.height = `18vw`;
+  // imageDiv.appendChild(image);
   div.appendChild(image);
 };
 

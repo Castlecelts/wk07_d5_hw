@@ -12,6 +12,21 @@ BeerListView.prototype.bindEvents = function () {
     this.clearView();
     this.createBeerList(this.beers);
   });
+
+  PubSub.subscribe("SelectAbvView:selected-abv", (abv) => {
+    this.clearView();
+    console.log(abv.detail);
+    console.log(this.beers);
+    const beersByAbv = this.beers.filter(beer => beer.abv == abv.detail);
+    console.log(beersByAbv);
+    this.createBeerList(beersByAbv);
+  });
+
+  PubSub.subscribe("RandomBeerData:data-ready", (event) => {
+    this.beers = event.detail;
+    this.clearView();
+    this.createBeerList(this.beers);
+  });
 };
 
 BeerListView.prototype.clearView = function () {
@@ -22,10 +37,23 @@ BeerListView.prototype.createBeerList = function (dataArray) {
   for (const beer of dataArray) {
     const div = document.createElement('div');
     div.className = "individual-beer";
+
+    const imageDiv = document.createElement('div');
+    imageDiv.className = "individual-beer-image";
+
+    const infoDiv = document.createElement('div');
+    infoDiv.className = "individual-beer-info";
+
     const beerDataLayout = new BeerDataLayout();
-    beerDataLayout.displayData(div, beer);
+    beerDataLayout.displayImage(imageDiv, beer);
+    beerDataLayout.displayData(infoDiv, beer);
+
+    div.appendChild(imageDiv);
+    div.appendChild(infoDiv);
+
     this.container.appendChild(div);
   }
 };
+
 
 module.exports = BeerListView;

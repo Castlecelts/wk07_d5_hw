@@ -1,0 +1,41 @@
+.flex-container {
+  display: flex;
+}
+
+.horizontal{
+  flex-direction: row;
+  justify-content: center;
+}
+
+#beer-list{
+  display: flex;
+  /* text-align: center; */
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+div.individual-beer{
+  /* flex-wrap: nowrap; */
+  flex-direction: row;
+  /* justify-content: center; */
+  /* text-align: left; */
+  width: 27vw;
+}
+
+.individual-beer-image{
+  flex: none;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.individual-beer-info{
+  flex: 2;
+  /* width: 25vw; */
+}
+
+h3{
+  text-align: center;
+  text-decoration: underline;
+  font-size: 20px
+}
